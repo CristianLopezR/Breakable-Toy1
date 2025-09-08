@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type JSX } from 'react';
 import type { ColumnDef } from '@tanstack/react-table';
 import { Table } from './tabla';
 import { Form } from './Form';
+<<<<<<< HEAD
 import { Paginacion } from './Pagination';
 import { FormFilters } from './FormFilters';
 import { Tiempo_Promedio } from './Tiempo_Promedio';
@@ -13,6 +14,8 @@ interface IFormInput {
   Done:string;
   id:number
 }
+=======
+>>>>>>> Raw-Product
 
 export type Item = {
  id:number;
@@ -31,7 +34,10 @@ export const Tabla_datos = () : JSX.Element => {
       cell: info => (
       <input
         type="checkbox"
+<<<<<<< HEAD
         checked={info.getValue() === true} readOnly
+=======
+>>>>>>> Raw-Product
         onChange={async () => {
         const original = info.row.original;
         const id = original.id;
@@ -67,11 +73,18 @@ export const Tabla_datos = () : JSX.Element => {
     {
       header: 'Actions',
       cell: info => (
+<<<<<<< HEAD
         
       <>
         <button 
           style={{ display: info.row.original.bool ? 'none' : 'flex' }}
           onClick={()=>{
+=======
+      <>
+        <button 
+          onClick={()=>{
+            console.log(info.row.original )
+>>>>>>> Raw-Product
             setModoFormulario('editar');
             setFilaEditando(info.row.original);
             setMostrarFormulario(true);
@@ -79,7 +92,10 @@ export const Tabla_datos = () : JSX.Element => {
           }
             >Editar</button>
         <button 
+<<<<<<< HEAD
           style={{ display: info.row.original.bool ? 'none' : 'flex' }}
+=======
+>>>>>>> Raw-Product
           onClick={async () => {
             const id=info.row.original.id
             await fetch(`http://127.0.0.1:9090/todos/Del/${id}`, {
@@ -94,6 +110,7 @@ export const Tabla_datos = () : JSX.Element => {
     []
     );
     const [datillos, setDatillos] = useState([]);
+<<<<<<< HEAD
     const [PaginasDis, setPaginasDisponibles] = useState<number>(1);
     const [paginaActual, setPaginaActual] = useState<number>(1);
     const [filaEditando, setFilaEditando] = useState<Item | null>(null);
@@ -123,6 +140,17 @@ export const Tabla_datos = () : JSX.Element => {
       setTiempoPromedioAlt(alt);
       setTiempoPromedioMed(med);
       setTiempoPromedioBaj(baj);
+=======
+    const [filaEditando, setFilaEditando] = useState<Item | null>(null);
+    const [modoFormulario, setModoFormulario] = useState<'crear' | 'editar'>('crear');
+    const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+    const cargarDatos = async () => {
+      const res = await fetch("http://127.0.0.1:9090/todos");
+      const data = await res.json();
+      console.log("Datos recibidos:", data);
+      setDatillos(data);
+>>>>>>> Raw-Product
       setMostrarFormulario(false)
     };
 
@@ -132,6 +160,7 @@ export const Tabla_datos = () : JSX.Element => {
     
     return(
       <>
+<<<<<<< HEAD
         <FormFilters onFiltrar={(datosFiltrados) => {
           setFiltros(datosFiltrados);
           cargarDatos(1, datosFiltrados);
@@ -150,5 +179,19 @@ export const Tabla_datos = () : JSX.Element => {
         <Paginacion paginas={PaginasDis} onPageChange={(pagina) => { cargarDatos(pagina);}}/>        
         <Tiempo_Promedio tiempoPromedio={tiempoPromedio} tiempoPromedioAlt={tiempoPromedioAlt} tiempoPromedioMed={tiempoPromedioMed} tiempoPromedioBaj={tiempoPromedioBaj}/>
       </> 
+=======
+      {!mostrarFormulario && (
+        <button onClick={() => { 
+          setModoFormulario('crear');
+          setFilaEditando(null);
+          setMostrarFormulario(true);        
+        }}>
+          + New Task
+        </button>
+    )}
+        <Table data={datillos} columns={cols}  showForm={mostrarFormulario} formComponent={<Form onAgregar={cargarDatos} datosIniciales={filaEditando} modo={modoFormulario}/>}/>
+        
+    </> 
+>>>>>>> Raw-Product
     );
 }

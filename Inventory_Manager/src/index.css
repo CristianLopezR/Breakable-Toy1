@@ -57,7 +57,11 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
+<<<<<<< HEAD
     background-color: #27B3B7;
+=======
+    background-color: #ffffff;
+>>>>>>> Raw-Product
   }
   a:hover {
     color: #747bff;
@@ -66,6 +70,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+<<<<<<< HEAD
 .TablaDatos{
   text-align: center;
 }
+=======
+>>>>>>> Raw-Product

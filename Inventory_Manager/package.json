@@ -13,12 +13,18 @@
     "@hookform/resolvers": "^5.1.1",
     "@tanstack/match-sorter-utils": "^8.19.4",
     "@tanstack/react-table": "^8.21.3",
+<<<<<<< HEAD
     "bootstrap": "^5.3.7",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-hook-form": "^7.60.0",
     "reactstrap": "^9.2.3",
+=======
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-hook-form": "^7.60.0",
+>>>>>>> Raw-Product
     "redux": "^5.0.1",
     "yup": "^1.6.1"
   },
