@@ -38,12 +38,7 @@ export const Form: React.FC<Props> = ({ onAgregar, datosIniciales, modo }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-<<<<<<< HEAD
         <div style={{textAlign: "center"}}>
-=======
-      <div className="input-group">
-        <div className="input-field">
->>>>>>> Raw-Product
           <input type="text" placeholder="Tarea" defaultValue={datosIniciales?.name??''} {...register("name")} />
           <select defaultValue={datosIniciales?.priority??''} {...register("priority")}>
             {opcionesPrioridad.map((opcion) => (
@@ -55,10 +50,6 @@ export const Form: React.FC<Props> = ({ onAgregar, datosIniciales, modo }) => {
           <input type="date" placeholder="Fecha a Realizar " defaultValue={datosIniciales?.fechaARealizar??''} {...register("fechaARealizar")} />
           <input type="submit" />
         </div>
-<<<<<<< HEAD
-=======
-      </div>
->>>>>>> Raw-Product
     </form>
   );
 };
