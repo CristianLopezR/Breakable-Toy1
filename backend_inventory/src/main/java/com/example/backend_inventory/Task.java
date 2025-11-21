@@ -3,20 +3,20 @@ package com.example.backend_inventory;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class MostrarDatos {
+public class Task {
     private Integer id;
     private String name;
-    private String fechaARealizar;
-    private Boolean check;
+    private String dueDate;
+    private Boolean done;
     private LocalDateTime doneDate;
     private String priority;
     private LocalDateTime creation;
     
-    public MostrarDatos(Integer id,String name,String fechaARealizar,Boolean check,String priority){
+    public Task(Integer id,String name,String fechaARealizar,Boolean check,String priority){
         this.id=id;
         this.name=name;
-        this.fechaARealizar=fechaARealizar;
-        this.check=check;
+        this.dueDate=fechaARealizar;
+        this.done=check;
         this.priority=priority;
         this.creation=LocalDateTime.now();
         this.doneDate=null;
@@ -28,11 +28,11 @@ public class MostrarDatos {
     public String getName(){return name;}
     public void setName(String name){this.name=name;}
     //Retorno Fecha a realizar
-    public String getFechaARealizar(){return fechaARealizar;}
-    public void setFechaARealizar(String fechaARealizar){this.fechaARealizar=fechaARealizar;}
+    public String getDueDate(){return dueDate;}
+    public void setDueDate(String fechaARealizar){this.dueDate=fechaARealizar;}
     //Retorno Realizado o no
-    public Boolean getBool(){return check;}
-    public void setBool(Boolean check){this.check=check;}
+    public Boolean isDone(){return done;}
+    public void setDone(Boolean done){this.done=done;}
     //Retorno prioridad
     public String getPriority(){return priority;}
     public void setPriority(String priority){this.priority=priority;}
@@ -48,8 +48,8 @@ public class MostrarDatos {
     @Override
     public boolean equals(Object o){
         if(o==null || getClass()!=o.getClass()) return false;
-        MostrarDatos that = (MostrarDatos) o;
-        return Objects.equals(name, that.name);
+        Task that = (Task) o;
+        return Objects.equals(id, that.id);
     }
     //Verifica que el Id sea diferente
     @Override
@@ -59,6 +59,6 @@ public class MostrarDatos {
 
     @Override
     public String toString() {
-        return name + " " + priority + " " + fechaARealizar +" "+ check+" "+ creation + " " + doneDate + " " + id;
+        return name + " " + priority + " " + dueDate +" "+ done + " "+ creation + " " + doneDate + " " + id;
     }
 }

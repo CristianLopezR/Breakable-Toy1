@@ -10,7 +10,7 @@ public class Mark_Undone {
     private int DoneHigh;
     private int DoneMid;
     private int DoneLow;
-    public Mark_Undone(int id,List<MostrarDatos> Datos,Duration AvaTime ,Duration AvaTimeHig,
+    public Mark_Undone(int id,List<Task> Datos,Duration AvaTime ,Duration AvaTimeHig,
                     Duration AvaTimeMid,Duration AvaTimeLow,
                     int DoneH,int DoneM,int DoneL){
         Duration AuxDuration = AvaTime;
@@ -26,7 +26,7 @@ public class Mark_Undone {
             this.DoneHigh=(d.getPriority().equals("Alta"))?DoneH-1:DoneH;
             this.DoneMid=(d.getPriority().equals("Media"))?DoneM-1:DoneM;
             this.DoneLow=(d.getPriority().equals("Baja"))?DoneL-1:DoneL;
-            d.setBool(false);
+            d.setDone(false);
             d.setdoneDate(null);
      });
     }

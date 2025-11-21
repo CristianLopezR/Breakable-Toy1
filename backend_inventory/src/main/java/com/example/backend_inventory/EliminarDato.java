@@ -11,13 +11,13 @@ public class EliminarDato {
     private int DoneHigh;
     private int DoneMid;
     private int DoneLow;
-    public EliminarDato(int id, List<MostrarDatos> Datos,Duration AvarageTime,Duration AvaTimeHigh,
+    public EliminarDato(int id, List<Task> Datos,Duration AvarageTime,Duration AvaTimeHigh,
                     Duration AvaTimeMid,Duration AvaTimeLow,int DoneH,int DoneM,int DoneL){
         Datos.stream()
         .filter(d->d.getId()==id)
         .findFirst()
         .ifPresent(d->{
-            if(d.getBool()==true){
+            if(d.isDone()==true){
                 Mark_Undone Realizado = new Mark_Undone(id-1, Datos, AvarageTime,AvaTimeHigh,AvaTimeMid,AvaTimeLow,DoneHigh,DoneMid,DoneLow);
                 this.AvarageTime=Realizado.Quitar();
                 this.AvaTimeHigh=Realizado.QuitarHigh();

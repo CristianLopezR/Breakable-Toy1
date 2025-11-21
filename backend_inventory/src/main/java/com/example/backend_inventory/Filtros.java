@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Filtros {
-    private List<MostrarDatos> Aux;
+    private List<Task> Aux;
     private int totalPaginas;
     private String Tiempo;
     private String Alt;
     private String Med;
     private String Baj;
 
-    public Filtros(int totalPaginas,List<MostrarDatos> Data,String Tiempo
+    public Filtros(int totalPaginas,List<Task> Data,String Tiempo
                     ,String PromedioHig,String PromedioMid,String PromedioLow){
         this.totalPaginas=totalPaginas;
         this.Aux=Data;
@@ -23,7 +23,7 @@ public class Filtros {
         this.Baj=PromedioLow;
     }
 
-    public List<MostrarDatos> getAux() {
+    public List<Task> getAux() {
         return Aux;
     }
 
@@ -46,25 +46,25 @@ public class Filtros {
         return Baj;
     }
 
-    public List<MostrarDatos> Nombre(List<MostrarDatos> Data, String A){
+    public List<Task> Nombre(List<Task> Data, String A){
         this.Aux=Data.stream().
         filter(d->d.getName().contains(A)).
         collect(Collectors.toList());
         return Aux;
     }
 
-    public List<MostrarDatos> Prioridad(List<MostrarDatos> Data,String Prio){
+    public List<Task> Prioridad(List<Task> Data,String Prio){
         this.Aux=Data.stream().
         filter(d->d.getPriority().contains(Prio)).
         collect(Collectors.toList());
         return Aux;
     }
 
-    public List<MostrarDatos> Done(List<MostrarDatos> Data,String Check){
+    public List<Task> Done(List<Task> Data,String Check){
         boolean auxbool;
         auxbool= (Check.equals("Done"))?true:false;
         this.Aux=Data.stream().
-        filter(d->d.getBool() == auxbool).
+        filter(d->d.isDone() == auxbool).
         collect(Collectors.toList());
         return Aux;
     }
@@ -81,14 +81,14 @@ public class Filtros {
         return horas + ":" + minutos + ":" + segundos;
         }
 
-    public Filtros Paginacion(List<MostrarDatos> Datos,int page,Duration Tiempo,int Check,
+    public Filtros Paginacion(List<Task> Datos,int page,Duration Tiempo,int Check,
                                 Duration TiempoHigh,Duration TiempoMid,Duration TiempoLow,
                                 int TimeHigh,int TimeMid,int TimeLow){
         int pageSize = 10;
 		int totalPaginas = (int) Math.ceil((double) Datos.size() / pageSize);
 		int start = (page-1) * pageSize;
 		int end = Math.min(start + pageSize, Datos.size());
-		List<MostrarDatos> pagina = new ArrayList<>();
+		List<Task> pagina = new ArrayList<>();
 		pagina = (Datos != null) ? Datos.subList(start, end) : Datos;
 		Filtros respuesta = new Filtros(totalPaginas, pagina,Horas(Check,Tiempo),Horas(TimeHigh,TiempoHigh),Horas(TimeMid,TiempoMid),Horas(TimeLow,TiempoLow));
         return respuesta;

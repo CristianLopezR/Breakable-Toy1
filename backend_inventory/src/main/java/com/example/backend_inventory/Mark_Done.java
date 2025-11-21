@@ -11,7 +11,7 @@ public class Mark_Done {
     private int DoneHigh;
     private int DoneMid;
     private int DoneLow;
-    public Mark_Done(int id,List<MostrarDatos> Datos,
+    public Mark_Done(int id,List<Task> Datos,
                     Duration AvaTime,Duration AvaTimeHig,
                     Duration AvaTimeMid,Duration AvaTimeLow,
                     int DoneH,int DoneM,int DoneL){
@@ -23,7 +23,7 @@ public class Mark_Done {
         .filter(d -> d.getId() == id)
         .findFirst()
         .ifPresent(d -> {
-            d.setBool(true);
+            d.setDone(true);
             d.setdoneDate(TiempoFinish);
             this.Promedio=obtenerPromedio.Promedio(d.getcreationDatePromedio(),d.getdoneDatePromedio(),AuxDuration);
             this.PromedioHig=(d.getPriority().equals("Alta"))?obtenerPromedio.Promedio(d.getcreationDatePromedio(),d.getdoneDatePromedio(),AvaTimeHig):AvaTimeHig;

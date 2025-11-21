@@ -3,9 +3,9 @@ package com.example.backend_inventory;
 import java.util.List;
 
 public class CrearDatos {
-    public CrearDatos(List<MostrarDatos> Datos,MostrarDatos newtask, int id){
+    public CrearDatos(List<Task> Datos,Task newtask, int id){
         boolean existe = false;
-        for (MostrarDatos dato : Datos) {
+        for (Task dato : Datos) {
         if (dato.equals(newtask)) {
             existe = true;
             break;
@@ -13,7 +13,7 @@ public class CrearDatos {
         }
         if (!existe) {
             newtask.setId(id);
-            newtask.setBool(false);
+            newtask.setDone(false);
             Datos.add(newtask);
         }
     }

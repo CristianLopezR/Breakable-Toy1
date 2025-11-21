@@ -9,6 +9,16 @@
             "projectName": "backend_inventory",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-BackendInventoryApplication<backend_inventory_bcdaabe4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.example.backend_inventory.BackendInventoryApplication",
+            "projectName": "backend_inventory_bcdaabe4",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
